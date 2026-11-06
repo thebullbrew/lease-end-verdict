@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Lease End Verdict — When Your Lease Ends Is a Price</title>
+<meta name="description" content="Lease-timing judge for landlords: price the vacancy season your lease lands in, find the term that ends in the prime window, and dodge the winter trap.">
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#10140F">
+<link rel="icon" href="icons/icon-32.png">
+<style>
+:root{--bg:#10140F;--surface:#1A211C;--surface2:#141A16;--text:#F5F2E8;--muted:#B9B4A3;--accent:#B49A5B;--accent2:#1F3522;--accent2b:#2A4A30;--danger:#D98A7A;--good:#9BC49A;--line:rgba(180,154,91,.45)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,'Times New Roman',serif;line-height:1.5}
+a{color:var(--accent)}header{padding:34px 20px 18px;text-align:center;border-bottom:1px solid var(--line)}
+.eyebrow{letter-spacing:.28em;text-transform:uppercase;color:var(--accent);font-size:.72rem}
+h1{font-size:2.5rem;line-height:1.05;margin:.35em 0 .2em;font-weight:700}h2{font-size:1.35rem;margin:0 0 .6em;color:var(--text)}h3{margin:.2em 0 .4em}
+.sub{color:var(--muted);max-width:760px;margin:0 auto;font-style:italic}
+.wrap{max-width:1080px;margin:0 auto;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}@media(max-width:820px){.grid{grid-template-columns:1fr}h1{font-size:2rem}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:20px;margin-bottom:18px}
+label{display:block;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:14px 0 5px}
+input,select{width:100%;padding:11px 12px;background:var(--surface2);border:1px solid var(--line);border-radius:4px;color:var(--text);font-family:inherit;font-size:1rem}
+input[type=range]{padding:0;accent-color:var(--accent)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn{background:var(--accent2);color:#F5F2E8;border:1px solid var(--accent);padding:12px 16px;border-radius:4px;cursor:pointer;font-family:inherit;font-size:1rem;width:100%}
+.btn:hover{background:var(--accent2b)}.btn.gold{background:var(--accent);color:#10140F;font-weight:700}.btn.ghost{background:transparent}
+.presets{display:flex;flex-wrap:wrap;gap:8px}.chip{border:1px solid var(--line);background:var(--surface2);color:var(--text);padding:7px 11px;border-radius:999px;cursor:pointer;font-family:inherit}
+.hero-num{font-size:2.6rem;color:var(--accent);line-height:1;font-weight:700}.big{font-size:1.15rem}
+.muted{color:var(--muted)}.small{font-size:.9rem}
+.seal{display:inline-block;border:2px solid var(--accent);color:var(--accent);border-radius:50%;width:148px;height:148px;text-align:center;padding-top:42px;font-weight:700;letter-spacing:.06em;float:right;margin:0 0 10px 14px;background:rgba(180,154,91,.07)}
+.seal span{display:block;font-size:.68rem;letter-spacing:.18em;color:var(--muted)}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}@media(max-width:700px){.kpis{grid-template-columns:1fr}}
+.kpi{background:var(--surface2);border:1px solid var(--line);padding:14px;border-radius:4px}.kpi b{font-size:1.5rem;color:var(--accent);display:block}
+table{width:100%;border-collapse:collapse;font-size:.94rem}th,td{padding:8px 7px;border-bottom:1px solid rgba(180,154,91,.22);text-align:right}th:first-child,td:first-child{text-align:left}th{color:var(--accent);letter-spacing:.05em;text-transform:uppercase;font-size:.72rem}
+tr.hit td{background:rgba(180,154,91,.14);font-weight:700}tr.best td{background:rgba(31,53,34,.65);font-weight:700}
+.bar{height:16px;background:#0B0E0A;border:1px solid var(--line);display:flex;overflow:hidden;border-radius:3px}.bar i{display:block;height:100%}
+.note{border-left:3px solid var(--accent);padding:8px 12px;background:var(--surface2);color:var(--muted)}
+.saved{white-space:pre-wrap}.flex{display:flex;gap:10px;flex-wrap:wrap}.flex>*{flex:1}
+footer{text-align:center;color:var(--muted);padding:26px;font-size:.88rem;border-top:1px solid var(--line)}
+</style></head><body>
+<header><div class="eyebrow">The Bull Brew · Daily Tools</div><h1>The Lease End Verdict</h1><p class="sub">Rent is only half the lease. The other half is the month it ends. A lease that expires in January can sit empty for six weeks. The same lease ending in June can fill in ten days. This tool prices that difference — and finds the term that lands you in the prime window.</p></header>
+<main class="wrap">
+<div class="card"><h2>Start with a lease — yours, or a preset</h2><div class="presets">
+<button class="chip" data-preset="winter">❄️ Winter Trap — Dec start, 12 mo</button>
+<button class="chip" data-preset="student">🎓 Student August — Aug start, 12 mo</button>
+<button class="chip" data-preset="spring">🌱 Spring Start — Apr start, 12 mo</button>
+<button class="chip" data-preset="soft">📉 Soft Market — Oct start, 12 mo</button>
+</div></div>
+<div class="grid">
+<section class="card"><h2>Your lease</h2>
+<label>Property / unit label</label><input id="name" value="Maple Street — Unit 2">
+<div class="row"><div><label>Lease start date</label><input id="start" type="date" value="2026-12-01"></div>
+<div><label>Proposed term (months)</label><input id="term" type="number" min="6" max="36" step="1" value="12"></div></div>
+<label>Term slider — try 13, 15, or 18 and watch the end month move</label><input id="termRange" type="range" min="6" max="24" step="1" value="12">
+<div class="row"><div><label>Monthly rent ($)</label><input id="rent" type="number" value="1850" min="0"></div>
+<div><label>Make-ready / turnover cost ($)</label><input id="makeReady" type="number" value="1250" min="0"></div></div>
+<div class="row"><div><label>Peak-season vacancy (days)</label><input id="baseDays" type="number" value="14" min="1"></div>
+<div><label>Extra carrying cost while vacant ($/day)</label><input id="carry" type="number" value="12" min="0"></div></div>
+<label>Market heat</label><select id="heat"><option value="0.75">Hot — units fly (×0.75 vacancy)</option><option value="1" selected>Normal (×1.00)</option><option value="1.35">Soft — units sit (×1.35 vacancy)</option></select>
+<p class="small muted">Peak-season vacancy is how fast a good unit fills in May–August in your market. The tool scales that baseline by the season your lease actually ends in. Winter multipliers run near double — that is not pessimism, that is December.</p>
+<div class="flex"><button class="btn gold" id="saveBtn">Save this case</button><button class="btn" id="copyBtn">Copy summary</button></div>
+</section>
+<section class="card"><h2>The verdict</h2><div class="seal" id="seal">WINTER<br>TRAP<span>LEASE END</span></div>
+<div class="hero-num" id="exposure">$0</div><p class="big" id="headline">—</p><p id="verdictText" class="muted">—</p>
+<div class="note" id="bestNote">—</div>
+<div style="clear:both"></div><h3>Where the exposure sits</h3>
+<div class="bar"><i id="barVac" style="background:#B49A5B"></i><i id="barCarry" style="background:#8A2E2E"></i><i id="barMake" style="background:#2A4A30"></i></div>
+<p class="small muted" id="barText">—</p>
+</section></div>
+<div class="kpis">
+<div class="kpi"><span class="muted small">LEASE ENDS</span><b id="kEnd">—</b><span id="kEndSub" class="small muted">—</span></div>
+<div class="kpi"><span class="muted small">EXPECTED VACANCY</span><b id="kVac">—</b><span id="kVacSub" class="small muted">—</span></div>
+<div class="kpi"><span class="muted small">EFFECTIVE RENT AFTER TURNOVER</span><b id="kEff">—</b><span class="small muted">rent minus turnover spread over the term</span></div>
+<div class="kpi"><span class="muted small">BEST TERM FROM THIS START</span><b id="kBest">—</b><span id="kBestSub" class="small muted">—</span></div>
+<div class="kpi"><span class="muted small">SAVED BY SWITCHING TO BEST TERM</span><b id="kSave">—</b><span class="small muted">per turnover, every cycle</span></div>
+<div class="kpi"><span class="muted small">ANNUALISED TURNOVER DRAG</span><b id="kDrag">—</b><span class="small muted">exposure × 12 ÷ term</span></div>
+</div>
+<section class="card"><h2>The calendar never lies — exposure by end month</h2><p class="small muted">Same rent, same unit. Only the month the lease ends changes. Read December and June side by side before you ever sign a 12-month lease that starts in winter.</p><div style="overflow:auto"><table id="calTable"></table></div></section>
+<section class="card"><h2>Term scan — 6 to 24 months from your start</h2><p class="small muted">Your proposed term is lit in gold. The cheapest landing is lit in hunter green. Often the fix is not a different tenant — it is a 15-month first term that resets every renewal to spring.</p><div style="overflow:auto"><table id="termTable"></table></div></section>
+<section class="card"><h2>Saved cases</h2><div id="savedList" class="saved muted small">No saved cases yet.</div><div class="flex" style="margin-top:12px"><button class="btn ghost" id="clearBtn">Clear saved cases</button></div></section>
+<section class="card"><h2>The method</h2>
+<p><strong>Turnover is seasonal, rent is not.</strong> Landlords negotiate rent to the dollar and then sign any end date the tenant suggests. That is backwards. A vacant unit in January burns lost rent, utilities, and showing time in the worst leasing month of the year — while the identical unit in June often has a waitlist.</p>
+<p><strong>The fix is term, not hope.</strong> You usually cannot move a tenant's move-in date. You can almost always move the term: offer 13, 15, or 18 months on the first lease so every renewal after it lands in the prime window. Tenants rarely care. Your vacancy line cares a lot.</p>
+<p><strong>Student landlords already know this.</strong> An August-to-August lease is prime by design. This tool gives every other landlord the same discipline — and a dollar figure to bring to the negotiation when a tenant asks for the term that lands you in the trap.</p>
+<p class="muted small">Season multipliers are plain-spoken planning defaults (Jan 2.10× down to Jun–Jul 0.70×), scaled by your market-heat pick. Set your peak-season baseline from your own last three fills for the sharpest read. Not legal advice; lease terms must comply with local law.</p></section>
+</main><footer>The Lease End Verdict · A Bull Brew daily tool · Everything runs locally in your browser.</footer>
+<script>
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{})}
+const $=id=>document.getElementById(id);
+const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const SEASON=[2.10,1.85,1.30,1.05,0.85,0.70,0.70,0.80,1.00,1.30,1.70,2.00];
+const money=n=>'$'+Math.round(n).toLocaleString('en-US');
+const presets={
+ winter:{name:'Winter Trap — Dec start',start:'2026-12-01',term:12,rent:1850,makeReady:1250,baseDays:14,carry:12,heat:'1'},
+ student:{name:'Student Rental — August start',start:'2026-08-01',term:12,rent:1650,makeReady:900,baseDays:10,carry:10,heat:'1'},
+ spring:{name:'Spring Start — April',start:'2026-04-01',term:12,rent:2100,makeReady:1400,baseDays:14,carry:14,heat:'1'},
+ soft:{name:'Soft Market — October start',start:'2026-10-01',term:12,rent:1500,makeReady:1100,baseDays:18,carry:12,heat:'1.35'}
+};
+function vals(){return{name:$('name').value||'Unit',start:$('start').value||'2026-12-01',term:Math.max(1,+ $('term').value||12),rent:+$('rent').value||0,makeReady:+$('makeReady').value||0,baseDays:+$('baseDays').value||14,carry:+$('carry').value||0,heat:+$('heat').value||1}}
+function addMonths(dateStr,months){const d=new Date(dateStr+'T12:00:00');const day=d.getDate();d.setMonth(d.getMonth()+months);if(d.getDate()<day)d.setDate(0);return d}
+function fmtDate(d){return MONTHS[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear()}
+function calc(v,termOverride,endMonthOverride){
+ const term=termOverride||v.term;
+ const end=addMonths(v.start,term);
+ const m=endMonthOverride!==undefined?endMonthOverride:end.getMonth();
+ const mult=SEASON[m]*v.heat;
+ const vacDays=Math.max(1,Math.round(v.baseDays*mult));
+ const daily=v.rent/30.44;
+ const vacLoss=vacDays*daily, carryLoss=vacDays*v.carry;
+ const total=vacLoss+carryLoss+v.makeReady;
+ return{term,end,m,mult,vacDays,vacLoss,carryLoss,total,eff:v.rent-total/term,drag:total*12/term};
+}
+function verdictFor(c){
+ if(c.mult<=0.85)return{seal:'PRIME<br>WINDOW',head:'This lease ends when tenants are fighting over units.',text:'Peak season, shortest vacancy, strongest replacement rent. Lock this end month in — and write renewals that keep landing here.'};
+ if(c.mult<=1.05)return{seal:'WORKABLE',head:'A fair landing. Not prime, not punished.',text:'Vacancy should stay close to your peak-season baseline. No need to fight over term — unless the scan below shows a prime window one or two months away for free.'};
+ if(c.mult<=1.45)return{seal:'SHOULDER<br>SEASON',head:'This end date quietly costs you real money.',text:'Autumn and early-spring endings sit longer and show worse. A small term shift — shorter or longer — usually buys a materially cheaper landing.'};
+ return{seal:'WINTER<br>TRAP',head:'This lease ends in the dead of leasing season.',text:'Expect the long sit: fewer searches, worse weather for showings, and applicants who know you are desperate. Do not sign this term as written — move it.'};
+}
+function render(){
+ const v=vals();$('termRange').value=Math.min(24,Math.max(6,v.term));
+ const c=calc(v);const vd=verdictFor(c);
+ // scan for best term 6..24
+ let best=null;for(let t=6;t<=24;t++){const x=calc(v,t);if(!best||x.total<best.total)best={...x,term:t}}
+ const saving=Math.max(0,c.total-best.total);
+ $('seal').innerHTML=vd.seal+'<span>LEASE END</span>';
+ $('exposure').textContent=money(c.total);
+ $('headline').textContent=vd.head;$('verdictText').textContent=vd.text;
+ $('bestNote').innerHTML=best.term===v.term?'<strong>Your proposed term is already the cheapest landing</strong> in the 6–24 month scan. Keep it.':'<strong>Cheapest landing:</strong> a '+best.term+'-month term ends '+fmtDate(best.end)+' ('+MONTHS[best.m]+') at '+money(best.total)+' — saving '+money(saving)+' per turnover versus your '+v.term+'-month term. Offer that term first.';
+ $('kEnd').textContent=MONTHS[c.m]+' '+c.end.getFullYear();$('kEndSub').textContent=fmtDate(c.end)+' · '+c.mult.toFixed(2)+'× season factor';
+ $('kVac').textContent=c.vacDays+' days';$('kVacSub').textContent=money(c.vacLoss)+' lost rent + '+money(c.carryLoss)+' carrying';
+ $('kEff').textContent=money(c.eff)+'/mo';$('kBest').textContent=best.term+' months';$('kBestSub').textContent='ends '+MONTHS[best.m]+' · '+money(best.total)+' exposure';
+ $('kSave').textContent=money(saving);$('kDrag').textContent=money(c.drag)+'/yr';
+ const tot=Math.max(1,c.total);$('barVac').style.width=(c.vacLoss/tot*100)+'%';$('barCarry').style.width=(c.carryLoss/tot*100)+'%';$('barMake').style.width=(v.makeReady/tot*100)+'%';
+ $('barText').textContent='Lost rent '+money(c.vacLoss)+' · Carrying while vacant '+money(c.carryLoss)+' · Make-ready '+money(v.makeReady);
+ // calendar table
+ let h='<tr><th>If lease ends in</th><th>Season ×</th><th>Vacancy</th><th>Lost rent</th><th>Total exposure</th><th>Read</th></tr>';
+ for(let m=0;m<12;m++){const x=calc(v,v.term,m);h+='<tr'+(m===c.m?' class="hit"':'')+'><td>'+MONTHS[m]+'</td><td>'+x.mult.toFixed(2)+'×</td><td>'+x.vacDays+'d</td><td>'+money(x.vacLoss)+'</td><td>'+money(x.total)+'</td><td>'+(x.mult<=0.85?'Prime':x.mult<=1.05?'Workable':x.mult<=1.45?'Shoulder':'Winter trap')+'</td></tr>'}
+ $('calTable').innerHTML=h;
+ let t='<tr><th>Term</th><th>Ends</th><th>Season ×</th><th>Vacancy</th><th>Total exposure</th><th>vs proposed</th></tr>';
+ for(let term=6;term<=24;term++){const x=calc(v,term);const cls=term===best.term?'best':term===v.term?'hit':'';t+='<tr class="'+cls+'"><td>'+term+' mo</td><td>'+MONTHS[x.m]+' '+x.end.getFullYear()+'</td><td>'+x.mult.toFixed(2)+'×</td><td>'+x.vacDays+'d</td><td>'+money(x.total)+'</td><td>'+(x.total-c.total===0?'—':(x.total<c.total?'−':'+')+money(Math.abs(x.total-c.total)).slice(0))+'</td></tr>'}
+ // fix vs column formatting (avoid double $ logic confusion) rebuild cleanly:
+ t='<tr><th>Term</th><th>Ends</th><th>Season ×</th><th>Vacancy</th><th>Total exposure</th><th>vs proposed</th></tr>';
+ for(let term=6;term<=24;term++){const x=calc(v,term);const cls=term===best.term?'best':term===v.term?'hit':'';const diff=x.total-c.total;t+='<tr class="'+cls+'"><td>'+term+' mo</td><td>'+MONTHS[x.m]+' '+x.end.getFullYear()+'</td><td>'+x.mult.toFixed(2)+'×</td><td>'+x.vacDays+'d</td><td>'+money(x.total)+'</td><td>'+(diff===0?'—':(diff<0?'saves '+money(-diff):'costs '+money(diff)))+'</td></tr>'}
+ $('termTable').innerHTML=t;
+ return{v,c,best,saving,vd};
+}
+let last=null;function refresh(){last=render()}
+['name','start','term','rent','makeReady','baseDays','carry','heat'].forEach(id=>$(id).addEventListener('input',refresh));
+$('termRange').addEventListener('input',e=>{$('term').value=e.target.value;refresh()});
+$('term').addEventListener('input',e=>{$('termRange').value=e.target.value});
+document.querySelectorAll('[data-preset]').forEach(b=>b.addEventListener('click',()=>{const p=presets[b.dataset.preset];$('name').value=p.name;$('start').value=p.start;$('term').value=p.term;$('termRange').value=p.term;$('rent').value=p.rent;$('makeReady').value=p.makeReady;$('baseDays').value=p.baseDays;$('carry').value=p.carry;$('heat').value=p.heat;refresh()}));
+function loadSaved(){try{return JSON.parse(localStorage.getItem('leaseEndVerdict.v1')||'[]')}catch(e){return[]}}
+function showSaved(){const s=loadSaved();$('savedList').textContent=s.length?s.map((x,i)=>(i+1)+'. '+x).join('\n'):'No saved cases yet.'}
+$('saveBtn').addEventListener('click',()=>{const{v,c,best,saving,vd}=last||refresh()||{};const r=render();const line=r.v.name+' — '+r.v.term+'mo from '+r.v.start+', ends '+MONTHS[r.c.m]+' '+r.c.end.getFullYear()+': '+money(r.c.total)+' exposure, '+r.c.vacDays+'d vacancy, best term '+r.best.term+'mo (saves '+money(r.saving)+')';const s=loadSaved();s.push(line);localStorage.setItem('leaseEndVerdict.v1',JSON.stringify(s));showSaved()});
+$('clearBtn').addEventListener('click',()=>{localStorage.removeItem('leaseEndVerdict.v1');showSaved()});
+$('copyBtn').addEventListener('click',async()=>{const r=render();const txt=['The Lease End Verdict — '+r.v.name,'Start: '+r.v.start+' · Term: '+r.v.term+' months · Rent: '+money(r.v.rent)+'/mo','Ends: '+fmtDate(r.c.end)+' ('+r.c.mult.toFixed(2)+'× season)','Expected vacancy: '+r.c.vacDays+' days · Lost rent '+money(r.c.vacLoss)+' · Carrying '+money(r.c.carryLoss)+' · Make-ready '+money(r.v.makeReady),'Total turnover exposure: '+money(r.c.total),'Effective rent after turnover: '+money(r.c.eff)+'/mo','Best term: '+r.best.term+' months (ends '+MONTHS[r.best.m]+', '+money(r.best.total)+') — saves '+money(r.saving),'Verdict: '+r.vd.head].join('\n');try{await navigator.clipboard.writeText(txt);$('copyBtn').textContent='Copied ✓';setTimeout(()=>$('copyBtn').textContent='Copy summary',1600)}catch(e){prompt('Copy this summary:',txt)}});
+refresh();showSaved();
+</script></body></html>
